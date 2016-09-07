@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/corner.png</file>
+        <file>image/wall.png</file>
+        <file>image/npc.png</file>
+        <file>image/enemy.png</file>
+        <file>image/item1.png</file>
+        <file>image/wall2.png</file>
+        <file>font/Hiragino Sans GB W3.otf</file>
+        <file>font/PingFangM.ttf</file>
+        <file>font/STKaiTi.ttf</file>
+        <file>image/item2.png</file>
+        <file>image/actor.png</file>
+        <file>image/advl.jpg</file>
+        <file>image/npc2.png</file>
+    </qresource>
+</RCC>
