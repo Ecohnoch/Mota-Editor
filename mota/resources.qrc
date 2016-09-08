@@ -15,5 +15,9 @@
         <file>image/npc2.png</file>
         <file>image/npc3.png</file>
         <file>image/npc4.png</file>
+        <file>image/ui1.png</file>
+        <file>image/ui2.png</file>
+        <file>image/ui3.png</file>
+        <file>image/ui4.png</file>
     </qresource>
 </RCC>

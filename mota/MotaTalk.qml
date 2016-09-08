@@ -19,16 +19,16 @@ Item {
         visible: false
         width: 400; height: 60
         x:{
-            if(actor.p_x <= 200 && actor.p_y <= 200) return actor.p_x+20
-            else if(actor.p_x >= 200 && actor.p_y <= 200) return actor.p_x-180
-            else if(actor.p_x <= 200 && actor.p_y >= 200) return actor.p_x-80
-            else return actor.p_x - 180
+            if(actor.p_x <= 300 && actor.p_y <= 300) return actor.p_x+30
+            else if(actor.p_x >= 300 && actor.p_y <= 300) return actor.p_x-170
+            else if(actor.p_x <= 300 && actor.p_y >= 300) return actor.p_x-70
+            else return actor.p_x - 170
         }
         y: {
-            if(actor.p_x <= 200 && actor.p_y <= 200) return actor.p_y+20
-            else if(actor.p_x >= 200 && actor.p_y <= 200) return actor.p_y
-            else if(actor.p_x <= 200 && actor.p_y >= 200) return actor.p_y-80
-            else return actor.p_y - 80
+            if(actor.p_x <= 300 && actor.p_y <= 300) return actor.p_y+30
+            else if(actor.p_x >= 300 && actor.p_y <= 300) return actor.p_y
+            else if(actor.p_x <= 300 && actor.p_y >= 300) return actor.p_y-70
+            else return actor.p_y - 70
         }
 
         color: "darkgrey"

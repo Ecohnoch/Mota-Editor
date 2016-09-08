@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     // read fullScreen & winSize here
     bool fullScreen=false;
-    QSize winSize(500,400); // works when !fullScreen
+    QSize winSize(700,600); // works when !fullScreen
 
 
     QSize screenSize=QApplication::desktop()->screenGeometry().size();  // works for fullScreen

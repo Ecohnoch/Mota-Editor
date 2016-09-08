@@ -19,46 +19,17 @@ Item {
                 else return 0
             }
             id: walls
-            width: 20; height: 20
+            width: 30; height: 30
             x: bord[index%20]; y: bord[Math.floor(index/20)]
             Image{
                 id: background
                 source: "image/"+isWhat[walls.isWall]+".png"
-                // if on fight
-                NumberAnimation on opacity{
-                    id: cur1; duration: 500; to: 0.4; running:false
-                    onStopped:{ cur2.restart()}
-                }
-                NumberAnimation on opacity{
-                    id: cur2; duration: 300; to: 1; running: false
-                    onStopped:{ cur3.restart()}
-                }
-                NumberAnimation on opacity{
-                    id: cur3; duration: 300; to: 0; running: false
-                    onStopped:{ bloodCost(walls.isWall); walls.isWall = 0; background.opacity = 1 }
-                    function bloodCost(i){
-                        if(i===6){
-                            actor.blood = actor.blood - 100
-                            actor.money = actor.money + 10
-                            actor.exp = actor.exp + 10
-                        }
-                        if(actor.blood <= 0) { event.transing = false;
-                            cell.visible = false; fight.visible = false}
-                    }
-                }
-                //for fight
-                function play(){
-                    cur1.restart()
-                }
             }
 
             function startTalk(x){
                 talk.advlUp(x)
             }
 
-            function startFight(){
-                background.play()
-            }
             function startHave(){
                 isWall = 0
             }
@@ -98,7 +69,9 @@ Item {
                 }
                 else if(wall.itemAt(i).isWall === 6){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    wall.itemAt(i).startFight()
+
+                    fight.timeSet(6, i)
+                    wall.itemAt(i).isWall = 0
                 }else if(wall.itemAt(i).isWall === 51){
                     wall.itemAt(i).startHave()
                 }return
@@ -112,8 +85,8 @@ Item {
     /************************************************************************/
     function _onClickedReport(){
         for(var i = 0; i < 400; i++){
-            if(wall.itemAt(i).x<=event.mouseX-100 && wall.itemAt(i).x>=event.mouseX-100-20 && wall.itemAt(i).y
-                    <= event.mouseY && wall.itemAt(i).y>= event.mouseY-20){
+            if(wall.itemAt(i).x<=event.mouseX-100 && wall.itemAt(i).x>=event.mouseX-100-30 && wall.itemAt(i).y
+                    <= event.mouseY && wall.itemAt(i).y>= event.mouseY-30){
                 if(creatWhat === "empty"){     //empty road
                     wall.itemAt(i).isWall = 0
                     console.log("empty")

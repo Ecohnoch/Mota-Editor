@@ -6,22 +6,8 @@ MouseArea {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     property bool transing: true
 
-    function doFlick(){
-        if(mouseX >= editor.x && mouseX <= editor.x+editor.width && mouseY >= editor.y && mouseY
-                <= editor.y+editor.height){
-            self.addflick()
-        }else if(mouseX >= editor.x+5 && mouseX <= editor.x+25 && mouseY >= editor.y+25 && mouseY
-                 <= editor.y+45){
-            self.cancelflick();editor.clicked()
-            console.log("text input!!")
-        }else{
-            onClickedReport()
-            console.log(mouseX, mouseY)
-        }
-    }
-
     onClicked:{
-        doFlick()
+        ui.doClicked(mouseX, mouseY)
     }
     function onClickedReport(){
         cell._onClickedReport()

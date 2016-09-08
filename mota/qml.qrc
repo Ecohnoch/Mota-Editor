@@ -7,5 +7,6 @@
         <file>MotaFight.qml</file>
         <file>MotaCell.qml</file>
         <file>MotaTalk.qml</file>
+        <file>MotaUI.qml</file>
     </qresource>
 </RCC>
