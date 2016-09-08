@@ -13,5 +13,7 @@
         <file>image/actor.png</file>
         <file>image/advl.jpg</file>
         <file>image/npc2.png</file>
+        <file>image/npc3.png</file>
+        <file>image/npc4.png</file>
     </qresource>
 </RCC>

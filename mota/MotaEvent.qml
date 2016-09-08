@@ -6,9 +6,22 @@ MouseArea {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     property bool transing: true
 
+    function doFlick(){
+        if(mouseX >= editor.x && mouseX <= editor.x+editor.width && mouseY >= editor.y && mouseY
+                <= editor.y+editor.height){
+            self.addflick()
+        }else if(mouseX >= editor.x+5 && mouseX <= editor.x+25 && mouseY >= editor.y+25 && mouseY
+                 <= editor.y+45){
+            self.cancelflick();editor.clicked()
+            console.log("text input!!")
+        }else{
+            onClickedReport()
+            console.log(mouseX, mouseY)
+        }
+    }
+
     onClicked:{
-        self.cancelflick()
-        onClickedReport()
+        doFlick()
     }
     function onClickedReport(){
         cell._onClickedReport()
@@ -69,15 +82,14 @@ MouseArea {
 
     function onGeneralOkDown(){
         talk.advlDown()
-        self.cancelflick()
     }
 
     function onGeneralEDown(){
-        var table = ["wall", "npc", "npc2", "enemy"]
+        var table = ["empty","wall","npc","npc2", "npc3","npc4","enemy","enemy2"]
         for(var i = 0; i < table.length; i++){
             if(creatWhat === table[i]){
                 if( i != table.length - 1) creatWhat = table[i+1]
-                else creatWhat = "wall"
+                else creatWhat = "empty"
                 return
             }
         }
