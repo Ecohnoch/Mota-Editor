@@ -8,5 +8,7 @@
         <file>MotaCell.qml</file>
         <file>MotaTalk.qml</file>
         <file>MotaUI.qml</file>
+        <file>MotaFunc.qml</file>
+        <file>MotaParser.qml</file>
     </qresource>
 </RCC>

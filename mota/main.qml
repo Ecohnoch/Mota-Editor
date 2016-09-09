@@ -24,6 +24,14 @@ Rectangle{
     property var level1:[]
     property string creatWhat: "wall"
 
+    MotaFunc {
+        id: func
+    }
+    MotaParser{
+        id: parser
+    }
+
+
     MotaCell{
         id: cell
     }

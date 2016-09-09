@@ -6,8 +6,9 @@ Item {
     x: 100
     Rectangle{
         id: editor
+        visible: true
         x: -90; y:500
-        width: 100; height: 20
+        width: 90; height: 20
         color: "white"
         Rectangle{
             x: 5; y: editor.height + 5
@@ -92,8 +93,14 @@ Item {
     }
 
     function cancelflick(){
-        talk.addData(flick.getText())
+        parser.changeCreat(flick.getText())
+        console.log("debug"+creatWhat)
     }
+    function showEditor(){
+        edit.visible = true
+        flick.visible = true
+    }
+
     Image{
         id: logo
         source: "image/ui2.png"
@@ -119,6 +126,15 @@ Item {
         id: uiBg
         source: "image/ui1.png"
         x: -100; y: 140
+        Repeater{
+            model: 5
+            Text{
+                x: 50; y: 31+index*35
+                text: actor.mainTable[index]
+                font.family:  "Arial"
+                font.pixelSize: 22
+            }
+        }
     }
 
     function doClicked(x, y){
@@ -134,4 +150,47 @@ Item {
             console.log(x, y)
         }
     }
+
+
+   Rectangle{
+       id: showEnemy
+       visible: false
+       width: 100; height:100
+       color: "steelblue"
+       Repeater{
+           model:3
+           Text{
+               width: 40; height: 80
+               x: 20; y: 15+index*30
+               text: actor.e_table[index]
+           }
+       }
+           /*Rectangle{
+               width:enemyeditor.width; height:enemyeditor.height
+               x: enemyeditor.x; y: enemyeditor.y
+               color: "white"
+           }
+
+           TextEdit{
+               id: enemyeditor
+               width: 40; height: 20
+               x: 40; y: 15+index*30
+           }
+           function enemyEdit(text){
+               if(index == 0) actor.e_blood = parseInt(text)
+               else if(index == 1) actor.e_force = parseInt(text)
+               else actor.e_defend = parseInt(text)
+           }
+       }*/
+   }
+   property bool isShowEnemyOn: false
+   function enemyShow(x, y){
+       isShowEnemyOn = true
+       showEnemy.x = x-100; showEnemy.y = y
+       showEnemy.visible = true; event.transing = false
+   }
+   function enemyHide(){
+       isShowEnemyOn = false
+       showEnemy.visible = false; event.transing = true
+   }
 }

@@ -5,15 +5,22 @@ MouseArea {
     anchors.fill: parent
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     property bool transing: true
-
-    onClicked:{
-        ui.doClicked(mouseX, mouseY)
-    }
     function onClickedReport(){
         cell._onClickedReport()
     }
 
+    onClicked: function(e) {
+        if(ui.isShowEnemyOn === true){
+            ui.enemyHide()
+        }
 
+        if(!transing){ return}
+        // main
+        if(isButtonRight(e.button))
+            onGeneralButtonRightDown()
+        else if(isButtonLeft(e.button))
+            onGeneralButtonnLeftDown()
+    }
     // key down
     Keys.onPressed: function(e){
         if(transing){
@@ -64,6 +71,12 @@ MouseArea {
     function isGeneralE(key){
         return key===Qt.Key_E
     }
+    function isButtonRight(key){
+        return key===Qt.RightButton
+    }
+    function isButtonLeft(key){
+        return key===Qt.LeftButton
+    }
 
 
     function onGeneralOkDown(){
@@ -76,6 +89,7 @@ MouseArea {
             if(creatWhat === table[i]){
                 if( i != table.length - 1) creatWhat = table[i+1]
                 else creatWhat = "empty"
+                if(creatWhat === "npc") ui.showEditor()
                 return
             }
         }
@@ -83,6 +97,13 @@ MouseArea {
 
     function onGeneralEscDown(){
 
+    }
+    function onGeneralButtonRightDown(){
+        cell._onRightClicked()
+        console.log("right button clicked")
+    }
+    function onGeneralButtonnLeftDown(){
+        ui.doClicked(mouseX, mouseY)
     }
 
 

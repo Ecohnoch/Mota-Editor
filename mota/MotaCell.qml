@@ -6,7 +6,7 @@ import QtAV 1.6
 Item {
     x: 100
     property var isWhat: ["wall","wall2","npc","npc2","npc3","npc4","enemy",  //6
-        "enemy","","","","","","","","","","","","","","","","","","","","", //27
+        "npc5","","","","","","","","","","","","","","","","","","","","", //27
         "","","","","","","","","","","","","","","","","","","","","","","",
         "item2"]
     Repeater{
@@ -69,8 +69,11 @@ Item {
                 }
                 else if(wall.itemAt(i).isWall === 6){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-
                     fight.timeSet(6, i)
+                    wall.itemAt(i).isWall = 0
+                }else if(wall.itemAt(i).isWall ===7){
+                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+                    fight.timeSet(7, i)
                     wall.itemAt(i).isWall = 0
                 }else if(wall.itemAt(i).isWall === 51){
                     wall.itemAt(i).startHave()
@@ -122,6 +125,27 @@ Item {
                     myEnemy.push(i)
                     console.log(myEnemy)
                 }
+                else if(creatWhat === "enemy2"){
+                    wall.itemAt(i).isWall = 7
+                    myEnemy.push(i)
+                    console.log(myEnemy)
+                }
+
+                return
+            }
+        }
+    }
+    function _onRightClicked(){
+        for(var i = 0; i < 400; i++){
+            if(wall.itemAt(i).x<=event.mouseX-100 && wall.itemAt(i).x>=event.mouseX-100-30 && wall.itemAt(i).y
+                    <= event.mouseY && wall.itemAt(i).y>= event.mouseY-30){
+                if(wall.itemAt(i).isWall >= 6 && wall.itemAt(i).isWall <= 50){
+                    actor.e_blood = fight.eblo[wall.itemAt(i).isWall-6]
+                    actor.e_defend = fight.edef[wall.itemAt(i).isWall-6]
+                    actor.e_force = fight.efor[wall.itemAt(i).isWall-6]
+                    ui.enemyShow(event.mouseX, event.mouseY)
+                }
+                else return
                 return
             }
         }
