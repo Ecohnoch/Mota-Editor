@@ -13,6 +13,10 @@ Item {
     function isCreat(s){
         return myTrim(s).substring(0,5) === 'creat'
     }
+    function isClear(s){
+        return myTrim(s).substring(0,5) === 'clear'
+    }
+
     function isNpc(s){
         return myTrim(s).substring(0,3) === 'npc'
     }
@@ -39,6 +43,9 @@ Item {
                 ss = myTrim(s.substring(6,s.length))
                 creatWhat = ss
                 return
+            }
+            else if(isClear(s)){
+                cell.clear()
             }
         }
         else if(myTrim(s).charAt(0) === '@'){

@@ -10,6 +10,7 @@ MouseArea {
     }
 
     onClicked: function(e) {
+        musicPlayer.switchTo('cj058.wav')
         if(ui.isShowEnemyOn === true){
             ui.enemyHide()
         }
@@ -27,13 +28,13 @@ MouseArea {
             console.log('Event.Keys.onPressed: e.key',e.key)
             actor.cur_x = actor.p_x; actor.cur_y = actor.p_y
             if(isLeft(e.key)){
-                actor._moveLeft();
+                actor._moveLeft();cell.isHit()
             }else if(isRight(e.key)){
-                actor._moveRight()
+                actor._moveRight();cell.isHit()
             }else if(isUp(e.key)){
-                actor._moveUp()
+                actor._moveUp();cell.isHit()
             }else if(isDown(e.key)){
-                actor._moveDown()
+                actor._moveDown();cell.isHit()
             }else if(isGeneralEsc(e.key)){
                 onGeneralEscDown();
             }else if(isGeneralE(e.key)){
@@ -41,7 +42,6 @@ MouseArea {
             }
             else
                 console.log('***[Event] Keys.onPressed: detected unknown key:'+e.key)
-            cell.isHit()
         }else{
             if(isGeneralOk(e.key)){
                 onGeneralOkDown(e.key)
@@ -84,9 +84,11 @@ MouseArea {
     }
 
     function onGeneralEDown(){
-        var table = ["empty","wall","npc","npc2", "npc3","npc4","enemy","enemy2"]
+        var table = ["empty","wall","npc","npc2", "npc3","npc4","enemy","enemy2","enemy3","enemy4","enemy5","enemy6",
+                "enemy7","enemy8","enemy9","speWall"]
         for(var i = 0; i < table.length; i++){
             if(creatWhat === table[i]){
+                musicPlayer.switchTo('cj003.wav')
                 if( i != table.length - 1) creatWhat = table[i+1]
                 else creatWhat = "empty"
                 if(creatWhat === "npc") ui.showEditor()

@@ -10,5 +10,6 @@
         <file>MotaUI.qml</file>
         <file>MotaFunc.qml</file>
         <file>MotaParser.qml</file>
+        <file>data.json</file>
     </qresource>
 </RCC>

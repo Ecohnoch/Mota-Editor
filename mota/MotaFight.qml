@@ -5,9 +5,27 @@ import QtAV 1.6
 
 Item {
     x: 100
-    property var efor: [15, 20, 30]
-    property var edef: [5, 6, 7]
-    property var eblo: [100, 200, 400]
+    property var efor: [15, 20, 30,35,40,45,50,55,60,65]
+    property var edef: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    property var eblo: [100, 200, 400, 500, 600, 700, 800, 900, 1000]
+
+    AVPlayer{
+        id: bgm
+        volume: 1
+        loops: Animation.Infinite
+        autoPlay: true
+        source: "bgm/ScriabinPrelude.m4a"
+        function _switchTo(path){
+            bgm.stop()
+            bgm.source = "bgm/"+path
+            bgm.loops = Animation.Infinite
+            bgm.play()
+        }
+    }
+    function switchTo(path){
+        bgm._switchTo(path)
+    }
+
 
     Image{
         id: fightBg
@@ -70,7 +88,6 @@ Item {
     }
 
     function timeSet(num,i){
-        fightBg.visible = true
         fightStart.myNumber = num
         fightStart.myFight = i
         fightStart.restart()
@@ -82,12 +99,16 @@ Item {
         if(fightStart.times === 0){
             actor.e_force = efor[realX]; actor.e_defend = edef[realX]; actor.e_blood = eblo[realX]
         }
-        if(actor.force <= actor.e_defend) {return }  //can't fight, play music keng~
+        if(delBlood <= 0) {return }  //can't fight, play music keng~
+        if(myDel <= 0) myDel = 0
+        fightBg.visible = true
         event.transing = false
         fightBg.fightUI(realX)
         fightStart.times++
         actor.e_blood = actor.e_blood - delBlood
         actor.blood = actor.blood - myDel
+        if(actor.blood <= 1000) musicPlayer.switchTo('gz_bgj.wav')
+        else musicPlayer.switchTo('gz_gj.wav')
 
         if(actor.blood <= 0){
             event.transing = false; cell.visible = false; fight.visible = false
@@ -100,6 +121,7 @@ Item {
             fightStart.times = 0
             fightStart.stop()
             fightBg.visible = false
+            switchTo('ScriabinPrelude.m4a')
             event.transing = true
             console.log("fight end!!!!")
         }

@@ -40,7 +40,7 @@ Item {
             x: 20; y: 20
             text: defaultTalkData[sayWhat]
             font.family: uiFont.name
-            font.pointSize: 11
+            font.pointSize: 18
             opacity: 0
             NumberAnimation on opacity{
                property var myStarted

@@ -20,5 +20,21 @@
         <file>image/ui3.png</file>
         <file>image/ui4.png</file>
         <file>image/npc5.png</file>
+        <file>image/enemy3.png</file>
+        <file>image/enemy4.png</file>
+        <file>image/enemy6.png</file>
+        <file>image/enemy7.png</file>
+        <file>image/enemy8.png</file>
+        <file>image/enemy9.png</file>
+        <file>image/enemy5.png</file>
+        <file>bgm/cj070.wav</file>
+        <file>bgm/cj081.wav</file>
+        <file>bgm/cj073.wav</file>
+        <file>bgm/zd02.mp3</file>
+        <file>bgm/gz_bgj.wav</file>
+        <file>bgm/gz_gj.wav</file>
+        <file>bgm/ScriabinPrelude.m4a</file>
+        <file>bgm/cj003.wav</file>
+        <file>bgm/cj058.wav</file>
     </qresource>
 </RCC>

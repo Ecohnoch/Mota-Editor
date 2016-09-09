@@ -1,7 +1,7 @@
 import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtAV 1.6
+import QtMultimedia 5.4
 
 Rectangle{
     id: self
@@ -23,6 +23,20 @@ Rectangle{
     property var myItem1: []
     property var level1:[]
     property string creatWhat: "wall"
+
+    Video{
+            id: musicPlayer
+            volume: 1
+            property var myStarted
+            property var myStopped
+            autoPlay: false
+            function switchTo(path){
+                musicPlayer.stop()
+                musicPlayer.source = "bgm/"+path
+                musicPlayer.play()
+            }
+
+        }
 
     MotaFunc {
         id: func
