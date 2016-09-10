@@ -4,7 +4,8 @@
 #include <QStyle>
 #include <QtCore>
 #include <QTimer>
-
+#include "motaconfig.h"
+#include "motafile.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
     // set using UTF-8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
+    qmlRegisterSingletonType<MotaConfig>("Mota.Config", 1, 0, "Config", &MotaConfig::qmlSingleton);
+    qmlRegisterSingletonType<MotaFile>("Mota.File", 1, 0, "File", &MotaFile::qmlSingleton);
     // read fullScreen & winSize here
     bool fullScreen=false;
     QSize winSize(700,600); // works when !fullScreen

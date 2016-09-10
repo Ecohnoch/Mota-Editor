@@ -4,6 +4,130 @@ import QtQuick.Controls 2.0
 import QtAV 1.6
 Item {
     x: 100
+    // wc
+    SpriteSequence{
+        id: wc1
+        interpolate: false
+        visible: false
+        // sprites
+        sprites:[
+            Sprite{
+                name: 'still'
+                source: 'image/wall/wall3.png'
+                frameCount: 1
+                frameWidth: 30
+                frameHeight: 30
+                frameDuration: 1000
+                to: {'turn': 1}
+            },
+            Sprite{
+                name: 'turn'
+                source: 'image/wall/wall3.png'
+                frameX: 30
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn2': 1}
+            },
+            Sprite{
+                name: 'turn2'
+                source: 'image/wall/wall3.png'
+                frameX: 60
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn3': 1}
+            },
+            Sprite{
+                name: 'turn3'
+                source: 'image/wall/wall3.png'
+                frameX: 0
+                frameY: 30
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn4': 1}
+            },
+            Sprite{
+                name: 'turn4'
+                source: 'image/wall/wall3.png'
+                frameX: 30
+                frameY: 30
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn5': 1}
+            },
+            Sprite{
+                name: 'turn5'
+                source: 'image/wall/wall3.png'
+                frameX: 60
+                frameY: 30
+                frameCount: 1
+                frameDuration: 100
+                to: {'still': 1}
+            },
+            Sprite{
+                name: 'turn6'
+                source: 'image/wall/wall3.png'
+                frameX: 0
+                frameY: 60
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn7': 1}
+            },
+            Sprite{
+                name: 'turn7'
+                source: 'image/wall/wall3.png'
+                frameX: 30
+                frameY: 60
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn8': 1}
+            },
+            Sprite{
+                name: 'turn8'
+                source: 'image/wall/wall3.png'
+                frameX: 60
+                frameY: 60
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn9': 1}
+            },
+            Sprite{
+                name: 'turn9'
+                source: 'image/wall/wall3.png'
+                frameX: 0
+                frameY: 90
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn10': 1}
+            },
+            Sprite{
+                name: 'turn10'
+                source: 'image/wall/wall3.png'
+                frameX: 30
+                frameY: 90
+                frameCount: 1
+                frameDuration: 100
+                to: {'turn11': 1}
+            },
+            Sprite{
+                name: 'turn11'
+                source: 'image/wall/wall3.png'
+                frameX: 60
+                frameY: 90
+                frameCount: 1
+                frameDuration: 100
+            }
+        ]
+    }// end of wc1
+    function showWc(show,x,y){
+        if(show){
+            console.log("wc shows!!!!!!!")
+            wc1.x = x; wc1.y = y
+            wc1.visible=true
+            wc1.jumpTo('still')
+        }else
+            wc1.visible=false
+    }
+
     Rectangle{
         id: editor
         visible: true
@@ -25,7 +149,7 @@ Item {
             id: isSuc
             width: 60; height:10
             x: 45; y: editor.height + 8
-            text: "added!"
+            text: "done!"
             opacity: 0
         }
 
@@ -151,20 +275,21 @@ Item {
         }
     }
 
+    Image{
+        id: showEnemy
+        visible: false
+        width: 100; height: 100
+        source: "image/enemyBg.png"
+        Repeater{
+            model: 3
+            Text{
+                width: 40; height: 80
+                x: 50; y: 0+index*33
+                text: actor.e_table[index]
+            }
+        }
+    }
 
-   Rectangle{
-       id: showEnemy
-       visible: false
-       width: 100; height:100
-       color: "steelblue"
-       Repeater{
-           model:3
-           Text{
-               width: 40; height: 80
-               x: 20; y: 15+index*30
-               text: actor.e_table[index]
-           }
-       }
            /*Rectangle{
                width:enemyeditor.width; height:enemyeditor.height
                x: enemyeditor.x; y: enemyeditor.y
@@ -182,7 +307,7 @@ Item {
                else actor.e_defend = parseInt(text)
            }
        }*/
-   }
+
    property bool isShowEnemyOn: false
    function enemyShow(x, y){
        isShowEnemyOn = true

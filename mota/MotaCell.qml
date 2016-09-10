@@ -5,10 +5,14 @@ import QtAV 1.6
 
 Item {
     x: 100
-    property var isWhat: ["wall","wall2","npc","npc2","npc3","npc4","enemy",  //6
-        "npc5","enemy3","enemy4","enemy5","enemy6","enemy7","enemy8","enemy9","","","","","","","","","","","","","", //27
-        "","","","","","","","","","","","","","","","","","","","","","","",
-        "wall2"]
+    property var isWhat: ["wall/wall","wall/wall2","npc","npc2","npc3","npc4","enemy/enemy",  //6
+        "enemy/enemy2","enemy/enemy3","enemy/enemy4","enemy/enemy5","enemy/enemy6","enemy/enemy7","enemy/enemy8","enemy/enemy9",
+        "enemy/enemy10","enemy/enemy11","enemy/enemy12","enemy/enemy13","enemy/enemy14","enemy/enemy15","enemy/enemy16","enemy/enemy17",
+        "enemy/enemy18","enemy/enemy19","enemy/enemy20","enemy/enemy21","enemy/enemy22", //27
+        "enemy/enemy23","enemy/enemy24","enemy/enemy25","enemy/enemy26","enemy/enemy27","enemy/enemy28","enemy/enemy29","enemy/enemy30","enemy/enemy31",
+        "enemy/enemy32","enemy/enemy33","enemy/enemy34","enemy/enemy35","enemy/enemy36",
+        "enemy/enemy37","enemy/enemy38","enemy/enemy39","enemy/enemy40","enemy/enemy41","enemy/enemy42","enemy/enemy43","enemy/enemy44",
+        "wall/wall2","wall/wall2","wall/wall3","wall/wall4"]
     Repeater{
         id: wall
         model: 400
@@ -21,6 +25,10 @@ Item {
             id: walls
             width: 30; height: 30
             x: bord[index%20]; y: bord[Math.floor(index/20)]
+            Image{
+                id: realBackgroud
+                source: "image/wall/wall.png"
+            }
             Image{
                 id: background
                 source: "image/"+isWhat[walls.isWall]+".png"
@@ -95,7 +103,17 @@ Item {
                 }
                 else if(wall.itemAt(i).isWall === 51){
                     wall.itemAt(i).isWall = 0
-                }return
+                }
+                else if(wall.itemAt(i).isWall === 52){
+                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+                    ui.showWc(true, wall.itemAt(i).x, wall.itemAt(i).y)
+                }
+                else if(wall.itemAt(i).isWall === 53){
+                    actor.p_x = actor.p_x + 30
+                    wall.itemAt(i).isWall = 0
+                }
+
+                return
             }
         }
     }
@@ -144,13 +162,25 @@ Item {
                     console.log(myNpc)
                     return
                 }
-                else if(creatWhat ==="enemy"){    //enemy 1, normal ,cost 100 blood
-                    wall.itemAt(i).isWall = 6
+                else if(creatWhat.substring(0,5) ==="enemy"){    //enemy 1, normal ,cost 100 blood
+                    if(creatWhat.length === 5) wall.itemAt(i).isWall = 6
+                    else{
+                        var ii = parseInt(creatWhat.substring(5,creatWhat.length))
+                        wall.itemAt(i).isWall = ii + 5
+                    }
                     return
                 }
+
                 else if(creatWhat ==="speWall"){
                     wall.itemAt(i).isWall = 51
                     return
+                }
+                else if(creatWhat === "speWall2"){
+                    wall.itemAt(i).isWall = 52
+                    return
+                }
+                else if(creatWhat === "speWall3"){
+                    wall.itemAt(i).isWall = 53
                 }
 
                 else{

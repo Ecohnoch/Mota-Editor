@@ -26,8 +26,18 @@ Item {
     function isMe(s){
         return myTrim(s).substring(0,2) === 'me'
     }
+    function isBgm(s){
+        return myTrim(s).substring(0,3) === 'bgm'
+    }
+    function isSe(s){
+        return myTrim(s).substring(0,2) === 'se'
+    }
+
     function isTransfer(s){
         return myTrim(s).substring(0, 8) === 'transfer'
+    }
+    function isFast(s){
+        return myTrim(s).substring(0, 4) === 'fast'
     }
 
     function isDistinguish(s){
@@ -41,11 +51,11 @@ Item {
             s = s.substring(1, s.length)
             if(isCreat(s)){
                 ss = myTrim(s.substring(6,s.length))
-                creatWhat = ss
+                func.creat(ss)
                 return
             }
             else if(isClear(s)){
-                cell.clear()
+                func.clear()
             }
         }
         else if(myTrim(s).charAt(0) === '@'){
@@ -58,13 +68,15 @@ Item {
                         pos111 = iii
                         a = parseInt(myTrim(ss.substring(0, pos111)))
                         b = parseInt(myTrim(ss.substring(pos111+1, ss.length)))
-                        actor.p_x = 30*(a-1); actor.p_y = 30*(b-1)
-                        console.log(actor.p_x, actor.p_y)
+                        func.transfer(a,b)
                         return
                     }
                 }
-
-
+            }
+            else if(isFast(s)){
+                ss = parseFloat(myTrim(s.substring(5, s.length)))
+                func.fastFight(ss)
+                return
             }
         }
 
@@ -72,7 +84,8 @@ Item {
             s = s.substring(1, s.length)
             if(isNpc(s)){
                 ss = myTrim(s.substring(4, s.length))
-                talk.myTalkData.push(ss)
+                func.addNpcTalk(ss)
+                return
             }
             else if(isEnemy(s)){
                 var myB; var myF; var myD; var pos1; var pos2
@@ -85,10 +98,8 @@ Item {
                 myB = parseInt(myTrim(ss.substring(0, pos1)))
                 myF = parseInt(myTrim(ss.substring(pos1+1, pos2)))
                 myD = parseInt(myTrim(ss.substring(pos2+1, ss.length)))
-                console.log("debug "+num)
-                fight.eblo[num-1] = myB
-                fight.efor[num-1] = myF
-                fight.edef[num-1] = myD
+                func.editEnemyX(num, myB, myF, myD)
+                return
             }
             else if(isMe(s)){
                 var myB2; var myF2; var myD2; var pos11; var pos22
@@ -100,10 +111,20 @@ Item {
                 myB2 = parseInt(myTrim(ss.substring(0, pos11)))
                 myF2 = parseInt(myTrim(ss.substring(pos11+1, pos22)))
                 myD2 = parseInt(myTrim(ss.substring(pos22+1, ss.length)))
-                actor.blood = myB2
-                actor.force = myF2
-                actor.defend = myD2
+                func.editMe(myB2, myF2, myD2)
+                return
             }
+            else if(isBgm(s)){
+                ss = parseFloat(myTrim(s.substring(4,s.length)))
+                func.editBgmVolume(ss)
+                return
+            }
+            else if(isSe(s)){
+                ss = parseFloat(myTrim(s.substring(3,s.length)))
+                func.editSeVolume(ss)
+                return
+            }
+
             return
         }
         else

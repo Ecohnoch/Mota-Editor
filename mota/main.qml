@@ -2,6 +2,7 @@ import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtMultimedia 5.4
+import Mota.Config 1.0
 
 Rectangle{
     id: self
@@ -17,7 +18,7 @@ Rectangle{
     }
     property var bord: [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390,
         420, 450, 480, 510, 540, 570]
-    property var myWall: []
+    property var myWall: Config.get().myWall
     property var myNpc: [[],[],[],[]]
     property var myEnemy: []
     property var myItem1: []

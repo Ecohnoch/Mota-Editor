@@ -24,6 +24,7 @@ MouseArea {
     }
     // key down
     Keys.onPressed: function(e){
+        //test
         if(transing){
             console.log('Event.Keys.onPressed: e.key',e.key)
             actor.cur_x = actor.p_x; actor.cur_y = actor.p_y
@@ -85,7 +86,9 @@ MouseArea {
 
     function onGeneralEDown(){
         var table = ["empty","wall","npc","npc2", "npc3","npc4","enemy","enemy2","enemy3","enemy4","enemy5","enemy6",
-                "enemy7","enemy8","enemy9","speWall"]
+                "enemy7","enemy8","enemy9","enemy10","enemy11","enemy12","enemy13","enemy14","enemy15","enemy16","enemy17","enemy18","enemy19","enemy20"
+                     ,"enemy21","enemy22","enemy23","enemy24","enemy25","enemy26","enemy27","enemy28","enemy29","enemy30","enemy31","enemy32"
+                     ,"enemy33","enemy34","enemy35","enemy36","enemy37","enemy38","enemy39","enemy40","enemy41","enemy42","speWall","speWall2","speWall3"]
         for(var i = 0; i < table.length; i++){
             if(creatWhat === table[i]){
                 musicPlayer.switchTo('cj003.wav')

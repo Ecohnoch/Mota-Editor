@@ -13,6 +13,7 @@ Item {
         id: bgm
         volume: 1
         loops: Animation.Infinite
+        autoLoad: true
         autoPlay: true
         source: "bgm/ScriabinPrelude.m4a"
         function _switchTo(path){
@@ -24,6 +25,9 @@ Item {
     }
     function switchTo(path){
         bgm._switchTo(path)
+    }
+    function _editVolume(x){
+        bgm.volume = x
     }
 
 
@@ -85,6 +89,9 @@ Item {
               startFight(myNumber, myFight)
         }
         property int times: 0
+    }
+    function _timeSet(t){
+        fightStart.interval = t
     }
 
     function timeSet(num,i){

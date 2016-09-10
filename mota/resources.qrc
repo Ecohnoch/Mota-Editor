@@ -1,11 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>image/corner.png</file>
-        <file>image/wall.png</file>
         <file>image/npc.png</file>
-        <file>image/enemy.png</file>
         <file>image/item1.png</file>
-        <file>image/wall2.png</file>
         <file>font/Hiragino Sans GB W3.otf</file>
         <file>font/PingFangM.ttf</file>
         <file>font/STKaiTi.ttf</file>
@@ -20,13 +17,6 @@
         <file>image/ui3.png</file>
         <file>image/ui4.png</file>
         <file>image/npc5.png</file>
-        <file>image/enemy3.png</file>
-        <file>image/enemy4.png</file>
-        <file>image/enemy6.png</file>
-        <file>image/enemy7.png</file>
-        <file>image/enemy8.png</file>
-        <file>image/enemy9.png</file>
-        <file>image/enemy5.png</file>
         <file>bgm/cj070.wav</file>
         <file>bgm/cj081.wav</file>
         <file>bgm/cj073.wav</file>
@@ -36,5 +26,52 @@
         <file>bgm/ScriabinPrelude.m4a</file>
         <file>bgm/cj003.wav</file>
         <file>bgm/cj058.wav</file>
+        <file>image/enemyBg.png</file>
+        <file>image/enemy/enemy.png</file>
+        <file>image/enemy/enemy2.png</file>
+        <file>image/enemy/enemy3.png</file>
+        <file>image/enemy/enemy4.png</file>
+        <file>image/enemy/enemy5.png</file>
+        <file>image/enemy/enemy6.png</file>
+        <file>image/enemy/enemy7.png</file>
+        <file>image/enemy/enemy8.png</file>
+        <file>image/enemy/enemy9.png</file>
+        <file>image/enemy/enemy10.png</file>
+        <file>image/enemy/enemy11.png</file>
+        <file>image/enemy/enemy12.png</file>
+        <file>image/enemy/enemy13.png</file>
+        <file>image/enemy/enemy14.png</file>
+        <file>image/enemy/enemy15.png</file>
+        <file>image/enemy/enemy16.png</file>
+        <file>image/enemy/enemy17.png</file>
+        <file>image/enemy/enemy18.png</file>
+        <file>image/enemy/enemy19.png</file>
+        <file>image/enemy/enemy20.png</file>
+        <file>image/enemy/enemy21.png</file>
+        <file>image/enemy/enemy22.png</file>
+        <file>image/enemy/enemy23.png</file>
+        <file>image/enemy/enemy24.png</file>
+        <file>image/enemy/enemy25.png</file>
+        <file>image/enemy/enemy26.png</file>
+        <file>image/enemy/enemy27.png</file>
+        <file>image/enemy/enemy28.png</file>
+        <file>image/enemy/enemy29.png</file>
+        <file>image/enemy/enemy30.png</file>
+        <file>image/enemy/enemy31.png</file>
+        <file>image/enemy/enemy32.png</file>
+        <file>image/enemy/enemy33.png</file>
+        <file>image/enemy/enemy34.png</file>
+        <file>image/enemy/enemy35.png</file>
+        <file>image/enemy/enemy36.png</file>
+        <file>image/enemy/enemy37.png</file>
+        <file>image/enemy/enemy38.png</file>
+        <file>image/enemy/enemy39.png</file>
+        <file>image/enemy/enemy40.png</file>
+        <file>image/enemy/enemy41.png</file>
+        <file>image/enemy/enemy42.png</file>
+        <file>image/wall/wall.png</file>
+        <file>image/wall/wall2.png</file>
+        <file>image/wall/wall3.png</file>
+        <file>image/wall/wall4.png</file>
     </qresource>
 </RCC>
