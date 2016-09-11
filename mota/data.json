@@ -6,10 +6,8 @@
     "defBlo":1000,
     "defFor":10,
     "defDef":10,
-    "defMon":10,
-    "defExp":10,
-
-
+    "defMon":100,
+    "defExp":100,
     "1": {
         "myWall": [246,284,364,366,21,43,25],
         "myNpc":{

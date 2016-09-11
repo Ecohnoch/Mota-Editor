@@ -81,7 +81,7 @@ Item {
                 else if(wall.itemAt(i).isWall === 2){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
                     musicPlayer.switchTo('cj073.wav')
-                    wall.itemAt(i).startTalk(2)
+                    deal.dealsShow()
                 }
                 else if(wall.itemAt(i).isWall === 3){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y

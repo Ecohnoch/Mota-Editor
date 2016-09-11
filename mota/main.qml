@@ -65,12 +65,15 @@ Rectangle{
         id: talk
     }
 
-    MotaUI{
-        id: ui
+    MotaDeal{
+        id: deal
     }
-
 
     MotaEvent{
         id: event
     }
+    MotaUI{
+        id: ui
+    }
+
 }
