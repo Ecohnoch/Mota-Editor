@@ -13,7 +13,8 @@ Item {
         "enemy/enemy23","enemy/enemy24","enemy/enemy25","enemy/enemy26","enemy/enemy27","enemy/enemy28","enemy/enemy29","enemy/enemy30","enemy/enemy31",
         "enemy/enemy32","enemy/enemy33","enemy/enemy34","enemy/enemy35","enemy/enemy36",
         "enemy/enemy37","enemy/enemy38","enemy/enemy39","enemy/enemy40","enemy/enemy41","enemy/enemy42","enemy/enemy43","enemy/enemy44",
-        "wall/wall2","wall/wall2","wall/wall3","wall/wall4"]
+        "wall/wall2","wall/wall2","wall/wall3","wall/wall4",//54
+        "special/down_floor","special/up_floor"]//54 55
     Repeater{
         id: wall
         model: 400
@@ -117,6 +118,12 @@ Item {
                     actor.p_x = actor.p_x + 30
                     wall.itemAt(i).isWall = 0
                 }
+                else if(wall.itemAt(i).isWall === 54){
+                    func.changeStairs(--level)
+                }
+                else if(wall.itemAt(i).isWall === 55){
+                    func.changeStairs(++level)
+                }
 
                 return
             }
@@ -188,6 +195,14 @@ Item {
                 }
                 else if(creatWhat === "speWall3"){
                     wall.itemAt(i).isWall = 53
+                    ui.upDataFlick2(i)
+                }
+                else if(creatWhat === "downStair"){
+                    wall.itemAt(i).isWall = 54
+                    ui.upDataFlick2(i)
+                }
+                else if(creatWhat === "upStair"){
+                    wall.itemAt(i).isWall = 55
                     ui.upDataFlick2(i)
                 }
 

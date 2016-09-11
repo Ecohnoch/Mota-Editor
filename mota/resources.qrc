@@ -73,5 +73,7 @@
         <file>image/wall/wall2.png</file>
         <file>image/wall/wall3.png</file>
         <file>image/wall/wall4.png</file>
+        <file>image/special/down_floor.png</file>
+        <file>image/special/up_floor.png</file>
     </qresource>
 </RCC>

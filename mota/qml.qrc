@@ -11,5 +11,6 @@
         <file>MotaFunc.qml</file>
         <file>MotaParser.qml</file>
         <file>data.json</file>
+        <file>MotaDeal.qml</file>
     </qresource>
 </RCC>

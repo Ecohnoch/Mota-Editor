@@ -5,10 +5,21 @@ import QtAV 1.6
 
 Item {
     x:100
-    property var myTalkData: ['this is a test','continue test']
-    property var defaultTalkData: ['I Love you, will never betry you!',
-        'who said I love you?',  'No, it wont be you','Plz dont say that',
-        'you know nothing, yuan tianqi']
+    property var defaultTalkData:[
+        "I Love you, will never betry you!",
+        "who said I love you?",
+        "No, it wont be you",
+        "Plz dont say that",
+        "you know nothing, yuan tianqi",
+    ]
+
+    property var myTalkData:[
+        "I Love you, will never betry you!",
+        "who said I love you?",
+        "No, it wont be you",
+        "Plz dont say that",
+        "you know nothing, yuan tianqi",
+    ]
 
     function addData(x){
         myTalkData.push(x)
@@ -33,6 +44,19 @@ Item {
 
         color: "darkgrey"
         opacity: 0.5
+        Repeater{
+            visible: advl.visible
+            id: plusWhat
+            Button{
+                enabled: true
+                width: 60; height: 30
+                x: 50 + index * 50; y: 50
+                Rectangle{
+                    anchors.fill: parent
+                    color:"black"
+                }
+            }
+        }
         Label{
             property int sayWhat:1
             property int sayWhat2:0
@@ -42,6 +66,7 @@ Item {
             font.family: uiFont.name
             font.pointSize: 18
             opacity: 0
+
             NumberAnimation on opacity{
                property var myStarted
                onStarted:{if(myStarted) myStarted()} id: fadeIn; to: 1; duration: 1500; running: false
@@ -69,10 +94,6 @@ Item {
             function wordsDown(){
                 fadeOut.restart()
             }
-        }
-
-        Label{
-            id: myWords
         }
         function _advlUp(x){
             advl.visible = true; hisWords.wordsOn(x)

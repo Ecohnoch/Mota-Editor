@@ -14,18 +14,16 @@ Item {
     property int p_y: 540
     property int cur_x: 30
     property int cur_y: 540
-    property int blood: 1000
-    property int force: 10
-    property int defend: 10
+    property int blood: json.defBlo
+    property int force: json.defFor
+    property int defend: json.defDef
     property int e_blood: 0
     property int e_force: 0
     property int e_defend: 0
-    property int money: 10
-    property int exp: 10
-    property int item1: 0
-    property int item2: 0
-    property int item3: 0
+    property int money: json.defMon
+    property int exp: json.defExp
     property var mainTable: [blood, force, defend, money, exp, item1, creatWhat]
+    property int item1: 0
     property var e_table: [e_blood, e_force, e_defend]
     property var e_name: 'none'
 

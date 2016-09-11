@@ -18,10 +18,12 @@ Rectangle{
     }
     property var bord: [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390,
         420, 450, 480, 510, 540, 570]
-    property var myWall: Config.get().myWall
-    property var myNpc: Config.get().myNpc
+    property int level: 1
+    property var json: Config.get()
+    property var myWall: json[1].myWall
+    property var myNpc: [json[1].myNpc[1],json[1].myNpc[2],json[1].myNpc[3],json[1].myNpc[4]]
     property var myEnemy: []
-    property var myItem1: []
+    property var myItem: []
     property var level1:[]
     property string creatWhat: "wall"
 

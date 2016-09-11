@@ -2,13 +2,21 @@ import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtAV 1.6
+import Mota.Config 1.0
 Item {
     //APIs
 
 
     //init to do
+    function changeStairs(i){
+        myWall = json[i].myWall
+        for(var ii = 0; ii < 4; ii++){
+            myNpc[ii] = json[i].myNpc[ii+1]
+        }
+    }
+
     function init(index){
-        var i
+        var i,j
         //wall
         for(i = 0; i < myWall.length; i++){
             if(index === myWall[i]){
@@ -16,26 +24,35 @@ Item {
             }
         }
         //npc
-        for(i = 0; i < myNpc.npc1.length; i++){
-            if(index === myNpc.npc1[i]){
-                return 2
+        for(i = 0; i < 4; i++){
+            for(j = 0; j < myNpc[i].length; j++){
+                if(index === myNpc[i][j]){
+                    return i+2
+                }
             }
         }
-        for(i = 0; i < myNpc.npc2.length; i++){
-            if(index === myNpc.npc2[i]){
-                return 3
-            }
-        }
-        for(i = 0; i < myNpc.npc3.length; i++){
-            if(index === myNpc.npc3[i]){
-                return 4
-            }
-        }
-        for(i = 0; i < myNpc.npc4.length; i++){
-            if(index === myNpc.npc4[i]){
-                return 5
-            }
-        }
+
+
+//        for(i = 0; i < myNpc[].length; i++){
+//            if(index === myNpc.npc1[i]){
+//                return 2
+//            }
+//        }
+//        for(i = 0; i < myNpc.npc2.length; i++){
+//            if(index === myNpc.npc2[i]){
+//                return 3
+//            }
+//        }
+//        for(i = 0; i < myNpc.npc3.length; i++){
+//            if(index === myNpc.npc3[i]){
+//                return 4
+//            }
+//        }
+//        for(i = 0; i < myNpc.npc4.length; i++){
+//            if(index === myNpc.npc4[i]){
+//                return 5
+//            }
+//        }
         return 0
     }
 
