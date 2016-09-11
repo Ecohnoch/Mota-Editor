@@ -7,14 +7,36 @@ Item {
 
 
     //init to do
-    function initMap(table){
-
-    }
-    function initEnemy(table){
-
-    }
-    function initNpc(table){
-
+    function init(index){
+        var i
+        //wall
+        for(i = 0; i < myWall.length; i++){
+            if(index === myWall[i]){
+                return 1
+            }
+        }
+        //npc
+        for(i = 0; i < myNpc.npc1.length; i++){
+            if(index === myNpc.npc1[i]){
+                return 2
+            }
+        }
+        for(i = 0; i < myNpc.npc2.length; i++){
+            if(index === myNpc.npc2[i]){
+                return 3
+            }
+        }
+        for(i = 0; i < myNpc.npc3.length; i++){
+            if(index === myNpc.npc3[i]){
+                return 4
+            }
+        }
+        for(i = 0; i < myNpc.npc4.length; i++){
+            if(index === myNpc.npc4[i]){
+                return 5
+            }
+        }
+        return 0
     }
 
     // assert

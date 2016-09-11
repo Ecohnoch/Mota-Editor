@@ -27,6 +27,7 @@ Item {
     property int item3: 0
     property var mainTable: [blood, force, defend, money, exp, item1, creatWhat]
     property var e_table: [e_blood, e_force, e_defend]
+    property var e_name: 'none'
 
 
     //control actor

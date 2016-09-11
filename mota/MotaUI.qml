@@ -225,6 +225,69 @@ Item {
         flick.visible = true
     }
 
+    Rectangle{
+        id: showTable
+        width: 600; height:50
+        color: "steelblue"
+        x: 0; y: 600
+    }
+        Flickable {
+              id: flick2
+              visible: true
+              x: showTable.x; y: showTable.y+5
+              width: 600; height: 50;
+              contentWidth: edit2.paintedWidth
+              contentHeight: edit2.paintedHeight
+              clip: true
+
+              function ensureVisible(r)
+              {
+                  if (contentX >= r.x)
+                      contentX = r.x;
+                  else if (contentX+width <= r.x+r.width)
+                      contentX = r.x+r.width-width;
+                  if (contentY >= r.y)
+                      contentY = r.y;
+                  else if (contentY+height <= r.y+r.height)
+                      contentY = r.y+r.height-height;
+              }
+              TextEdit {
+                  id: edit2
+                  width: flick2.width
+                  height: flick2.height
+                  focus: false
+                  text: "map: "+myWall
+                  wrapMode: TextEdit.Wrap
+                  onCursorRectangleChanged: flick2.ensureVisible(cursorRectangle)
+                  font.pixelSize: 12
+              }
+              function getText(){
+                  edit2.enabled = false
+                  edit2.focus = false; event.focus = true
+                  return edit2.text
+              }
+              function addText(){
+                  edit2.enabled = true
+                  edit2.focus = true; event.focus = false
+              }
+              function updateText(i){
+                  edit2.text = "click: "+i+" "+"map: "+myWall
+              }
+          }
+        function addflick2(){
+            flick2.addText()
+        }
+
+        function cancelflick2(){
+            var ss
+            ss = flick2.getText()
+            console.log("cancel flick2!!",ss)
+        }
+        function upDataFlick2(i){
+            flick2.updateText(i)
+            console.log("update!")
+        }
+
     Image{
         id: logo
         source: "image/ui2.png"
@@ -268,8 +331,13 @@ Item {
         }else if(x >= editor.x+5+100 && x <= editor.x+25+100 && y >= editor.y+25 &&
                 y<= editor.y+45){
             cancelflick();editor.clicked()
+            cancelflick2()
             console.log("text input!!")
-        }else{
+        }else if(x >= showTable.x && x <= showTable.x+600 && y>= showTable.y && y<= showTable.y+50){
+            addflick2()
+            console.log("show table")
+        }
+        else{
             event.onClickedReport()
             console.log(x, y)
         }
@@ -281,11 +349,14 @@ Item {
         width: 100; height: 100
         source: "image/enemyBg.png"
         Repeater{
-            model: 3
+            model: 4
             Text{
                 width: 40; height: 80
-                x: 50; y: 0+index*33
-                text: actor.e_table[index]
+                x: 50; y: 5+index*26
+                text: {
+                    if(index == 0) return actor.e_name+''
+                    else return actor.e_table[index-1]
+                }
             }
         }
     }

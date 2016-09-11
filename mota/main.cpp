@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonType<MotaFile>("Mota.File", 1, 0, "File", &MotaFile::qmlSingleton);
     // read fullScreen & winSize here
     bool fullScreen=false;
-    QSize winSize(700,600); // works when !fullScreen
+    QSize winSize(700,650); // works when !fullScreen
 
 
     QSize screenSize=QApplication::desktop()->screenGeometry().size();  // works for fullScreen

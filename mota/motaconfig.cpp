@@ -19,7 +19,7 @@ QObject* MotaConfig::qmlSingleton(QQmlEngine *engine, QJSEngine *scriptEngine){
         _singleton=new MotaConfig;
 
         // load default config from resources :/data.json.json
-        QString defaultData=MotaFile::singleton()->read(":/data.json.json");
+        QString defaultData=MotaFile::singleton()->read(":/data.json");
         _singleton->data=parseJsonTable(defaultData);
         //  default config should NOT be empty!!
         Q_ASSERT(!_singleton->data.isEmpty());

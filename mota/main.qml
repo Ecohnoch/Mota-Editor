@@ -19,7 +19,7 @@ Rectangle{
     property var bord: [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390,
         420, 450, 480, 510, 540, 570]
     property var myWall: Config.get().myWall
-    property var myNpc: [[],[],[],[]]
+    property var myNpc: Config.get().myNpc
     property var myEnemy: []
     property var myItem1: []
     property var level1:[]
@@ -71,6 +71,4 @@ Rectangle{
     MotaEvent{
         id: event
     }
-
-
 }

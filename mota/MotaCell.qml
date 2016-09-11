@@ -2,6 +2,7 @@ import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtAV 1.6
+import Mota.Config 1.0
 
 Item {
     x: 100
@@ -18,10 +19,14 @@ Item {
         model: 400
         Rectangle{
             property int isWall
-            isWall:{
+            isWall:initMap(index)
+            function initMap(index){
                 if(index%20 == 0|| index%20 ==19 ||index <= 20 || index >= 380) return 1 //must be
-                else return 0
+                else{
+                    return func.init(index)
+                }
             }
+
             id: walls
             width: 30; height: 30
             x: bord[index%20]; y: bord[Math.floor(index/20)]
@@ -130,63 +135,67 @@ Item {
                 if(creatWhat === "empty"){     //empty road
                     wall.itemAt(i).isWall = 0
                     console.log("empty")
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat === "wall"){   // normal wall
                     wall.itemAt(i).isWall = 1
                     myWall.push(i)
+                    ui.upDataFlick2(i)
                     console.log(myWall)
                     return
                 }
                 else if(creatWhat === "npc"){    //  normal npc, can't disappear
                     wall.itemAt(i).isWall = 2
                     myNpc[0].push(i)
-                    console.log(myNpc)
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat === "npc2"){   // spcial npc, will be road
                     wall.itemAt(i).isWall = 3
-                    myNpc[1].push(i)
-                    console.log(myNpc)
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat === "npc3"){   //spcial npc, will be wall
                     wall.itemAt(i).isWall = 4
-                    myNpc[2].push(i)
-                    console.log(myNpc)
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat === "npc4"){   //spcial npc, will be item1
                     wall.itemAt(i).isWall = 5
-                    myNpc[3].push(i)
-                    console.log(myNpc)
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat.substring(0,5) ==="enemy"){    //enemy 1, normal ,cost 100 blood
-                    if(creatWhat.length === 5) wall.itemAt(i).isWall = 6
+                    if(creatWhat.length === 5){ wall.itemAt(i).isWall = 6;ui.upDataFlick2(i)}
                     else{
                         var ii = parseInt(creatWhat.substring(5,creatWhat.length))
                         wall.itemAt(i).isWall = ii + 5
+                        ui.upDataFlick2(i)
                     }
                     return
                 }
 
                 else if(creatWhat ==="speWall"){
                     wall.itemAt(i).isWall = 51
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat === "speWall2"){
                     wall.itemAt(i).isWall = 52
+                    ui.upDataFlick2(i)
                     return
                 }
                 else if(creatWhat === "speWall3"){
                     wall.itemAt(i).isWall = 53
+                    ui.upDataFlick2(i)
                 }
 
                 else{
                     for(var j = 1; j <= 50; j++){
                         if(creatWhat == "enemy"+j ){
                             wall.itemAt(i).isWall = j+5
+                            ui.upDataFlick2(i)
                             return
                         }
                     }
@@ -203,6 +212,7 @@ Item {
                     actor.e_blood = fight.eblo[wall.itemAt(i).isWall-6]
                     actor.e_defend = fight.edef[wall.itemAt(i).isWall-6]
                     actor.e_force = fight.efor[wall.itemAt(i).isWall-6]
+                    actor.e_name = fight.ename[wall.itemAt(i).isWall-6]
                     ui.enemyShow(event.mouseX, event.mouseY)
                 }
                 else return

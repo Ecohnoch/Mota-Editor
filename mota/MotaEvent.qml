@@ -1,5 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
+import Mota.Config 1.0
 MouseArea {
     focus: true
     anchors.fill: parent
@@ -14,7 +15,6 @@ MouseArea {
         if(ui.isShowEnemyOn === true){
             ui.enemyHide()
         }
-
         if(!transing){ return}
         // main
         if(isButtonRight(e.button))
@@ -24,7 +24,7 @@ MouseArea {
     }
     // key down
     Keys.onPressed: function(e){
-        //test
+        console.log(Config.get().myNpc, myNpc.npc1)//test
         if(transing){
             console.log('Event.Keys.onPressed: e.key',e.key)
             actor.cur_x = actor.p_x; actor.cur_y = actor.p_y
