@@ -89,7 +89,8 @@ MouseArea {
                                "enemy7","enemy8","enemy9","enemy10","enemy11","enemy12","enemy13","enemy14","enemy15","enemy16","enemy17","enemy18","enemy19","enemy20"
                                     ,"enemy21","enemy22","enemy23","enemy24","enemy25","enemy26","enemy27","enemy28","enemy29","enemy30","enemy31","enemy32"
                                     ,"enemy33","enemy34","enemy35","enemy36","enemy37","enemy38","enemy39","enemy40","enemy41","enemy42","speWall","speWall2","speWall3",
-                               "downStair","upStair"]
+                               "downStair","upStair","item1","item2","item3","item4","item5","item6","item7","item8","equip1","equip2","equip3","equip4",
+                                "equip5","equip6","equip7","equip8"]
         for(var i = 0; i < table.length; i++){
             if(creatWhat === table[i]){
                 musicPlayer.switchTo('cj003.wav')
@@ -111,6 +112,5 @@ MouseArea {
     function onGeneralButtonnLeftDown(){
         ui.doClicked(mouseX, mouseY)
     }
-
 
 }

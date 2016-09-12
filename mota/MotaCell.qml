@@ -6,7 +6,7 @@ import Mota.Config 1.0
 
 Item {
     x: 100
-    property var isWhat: ["wall/wall","wall/wall2","npc","npc2","npc3","npc4","enemy/enemy",  //6
+    property var isWhat: ["wall/wall","wall/wall2","actors/moneyNpc","actors/npc","actors/npc","actors/npc","enemy/enemy",  //6
         "enemy/enemy2","enemy/enemy3","enemy/enemy4","enemy/enemy5","enemy/enemy6","enemy/enemy7","enemy/enemy8","enemy/enemy9",
         "enemy/enemy10","enemy/enemy11","enemy/enemy12","enemy/enemy13","enemy/enemy14","enemy/enemy15","enemy/enemy16","enemy/enemy17",
         "enemy/enemy18","enemy/enemy19","enemy/enemy20","enemy/enemy21","enemy/enemy22", //27
@@ -14,7 +14,10 @@ Item {
         "enemy/enemy32","enemy/enemy33","enemy/enemy34","enemy/enemy35","enemy/enemy36",
         "enemy/enemy37","enemy/enemy38","enemy/enemy39","enemy/enemy40","enemy/enemy41","enemy/enemy42","enemy/enemy43","enemy/enemy44",
         "wall/wall2","wall/wall2","wall/wall3","wall/wall4",//54
-        "special/down_floor","special/up_floor"]//54 55
+        "special/down_floor","special/up_floor",  //54 55
+        "item/blo1","item/blo2","item/blo3","item/blo4","item/def1","item/def2","item/def3","item/def4",
+        "item/w1","item/w2","item/w3","item/w4","item/s1","item/s2","item/s3","item/s4" //71
+    ]
     Repeater{
         id: wall
         model: 400
@@ -37,7 +40,7 @@ Item {
             }
             Image{
                 id: background
-                source: "image/"+isWhat[walls.isWall]+".png"
+                source: "image/"+isWhat[isWall]+".png"
             }
 
             function startTalk(x){
@@ -80,24 +83,24 @@ Item {
                 }
                 else if(wall.itemAt(i).isWall === 2){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj073.wav')
+                    musicPlayer.switchTo('cj078wav')
                     deal.dealsShow()
                 }
                 else if(wall.itemAt(i).isWall === 3){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj073.wav')
+                    musicPlayer.switchTo('cj078.wav')
                     wall.itemAt(i).startTalk()
                     wall.itemAt(i).isWall = 0
                 }
                 else if(wall.itemAt(i).isWall === 4){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj073.wav')
+                    musicPlayer.switchTo('cj078.wav')
                     wall.itemAt(i).startTalk()
                     wall.itemAt(i).isWall = 1
                 }
                 else if(wall.itemAt(i).isWall === 5){
                     actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj073.wav')
+                    musicPlayer.switchTo('cj078.wav')
                     wall.itemAt(i).startTalk()
                     wall.itemAt(i).isWall = 51
                 }
@@ -123,6 +126,16 @@ Item {
                 }
                 else if(wall.itemAt(i).isWall === 55){
                     func.changeStairs(++level)
+                }
+                else if(wall.itemAt(i).isWall >= 56 && wall.itemAt(i).isWall <= 63){
+                    musicPlayer.switchTo('cj062.wav')
+                    func.addProp(wall.itemAt(i).isWall)
+                    wall.itemAt(i).isWall = 0
+                }
+                else if(wall.itemAt(i).isWall >= 64 && wall.itemAt(i).isWall <= 71){
+                    musicPlayer.switchTo('cj062.wav')
+                    func.changeWOrS(wall.itemAt(i).isWall)
+                    wall.itemAt(i).isWall = 0
                 }
 
                 return
@@ -205,7 +218,16 @@ Item {
                     wall.itemAt(i).isWall = 55
                     ui.upDataFlick2(i)
                 }
-
+                else if(creatWhat.substring(0,4) === "item"){
+                    var iii = parseInt(creatWhat.substring(4,creatWhat.length))
+                    wall.itemAt(i).isWall = 55 + iii
+                    ui.upDataFlick2(i)
+                }
+                else if(creatWhat.substring(0,5) === 'equip'){
+                    var iiii = parseInt(creatWhat.substring(5, creatWhat.length))
+                    wall.itemAt(i).isWall = 63+iiii
+                    ui.upDataFlick2(i)
+                }
                 else{
                     for(var j = 1; j <= 50; j++){
                         if(creatWhat == "enemy"+j ){

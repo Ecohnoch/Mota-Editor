@@ -22,7 +22,7 @@ Rectangle{
     property var json: Config.get()
     property var myWall: json[1].myWall
     property var myNpc: [json[1].myNpc[1],json[1].myNpc[2],json[1].myNpc[3],json[1].myNpc[4]]
-    property var myEnemy: []
+    property var myEnemy: [json[1].myEnemy[1],[],[],[],[],[]]
     property var myItem: []
     property var level1:[]
     property string creatWhat: "wall"

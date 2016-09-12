@@ -75,5 +75,32 @@
         <file>image/wall/wall4.png</file>
         <file>image/special/down_floor.png</file>
         <file>image/special/up_floor.png</file>
+        <file>bgm/cj078.wav</file>
+        <file>image/actors/moneyNpc.png</file>
+        <file>image/actors/npc.png</file>
+        <file>image/item/blo1.png</file>
+        <file>image/item/blo2.png</file>
+        <file>image/item/blo3.png</file>
+        <file>image/item/blo4.png</file>
+        <file>image/item/def1.png</file>
+        <file>image/item/def2.png</file>
+        <file>image/item/def3.png</file>
+        <file>image/item/def4.png</file>
+        <file>image/item/s1.png</file>
+        <file>image/item/s2.png</file>
+        <file>image/item/s3.png</file>
+        <file>image/item/s4.png</file>
+        <file>image/item/s5.png</file>
+        <file>image/item/s6.png</file>
+        <file>image/item/s7.png</file>
+        <file>image/item/s8.png</file>
+        <file>image/item/w1.png</file>
+        <file>image/item/w2.png</file>
+        <file>image/item/w3.png</file>
+        <file>image/item/w4.png</file>
+        <file>image/item/w5.png</file>
+        <file>image/item/w6.png</file>
+        <file>image/item/w7.png</file>
+        <file>image/item/w8.png</file>
     </qresource>
 </RCC>

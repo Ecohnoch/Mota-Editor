@@ -4,6 +4,23 @@ import QtQuick.Controls 2.0
 import QtAV 1.6
 Item {
     x: 100
+    //400, 450,, x= 0
+    Image{
+        id: weapen
+        x: -90; y:400
+        width: 30; height: 30
+        source: "image/item/"+actor.weapen+".png"
+    }
+    Image{
+        id: shield
+        x: -40; y:400
+        width:30; height: 30
+        source: "image/item/"+actor.sheild+".png"
+    }
+    function changeWeapen(x){
+        weapen.source = "image/item"+x+".png"
+    }
+
     // wc
     SpriteSequence{
         id: wc1

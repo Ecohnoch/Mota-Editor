@@ -36,16 +36,20 @@ Item {
                     if(level <=10 ){
                         actor.force += 3; actor.money -= 25
                     }
+                    musicPlayer.switchTo('cj073.wav')
                 }else if(index === 1 && actor.money >= 25){
                     if(level <= 10){
                         actor.defend += 5; actor.money -= 25
                     }
+                    musicPlayer.switchTo('cj073.wav')
                 }else if(index ===2 && actor.money >= 25){
                     if(level <= 10){
                     actor.blood += 800; actor.money -= 25
                     }
+                    musicPlayer.switchTo('cj073.wav')
                 }else if(index ===3){
                     deal.dealsDown()
+                    musicPlayer.switchTo('cj078.wav')
                 }
             }
         }

@@ -31,37 +31,40 @@ Item {
                 }
             }
         }
-
-
-//        for(i = 0; i < myNpc[].length; i++){
-//            if(index === myNpc.npc1[i]){
-//                return 2
-//            }
-//        }
-//        for(i = 0; i < myNpc.npc2.length; i++){
-//            if(index === myNpc.npc2[i]){
-//                return 3
-//            }
-//        }
-//        for(i = 0; i < myNpc.npc3.length; i++){
-//            if(index === myNpc.npc3[i]){
-//                return 4
-//            }
-//        }
-//        for(i = 0; i < myNpc.npc4.length; i++){
-//            if(index === myNpc.npc4[i]){
-//                return 5
-//            }
-//        }
         return 0
     }
+
 
     // assert
     function assert(cond, msg){
         if(cond) console.log("*** with ", msg)
         return
     }
+    //something else
+    function addProp(i){
+        var addNum = [2, 4, 6, 8]
+        if(i >= 56 && i <= 59){
+            actor.force += addNum[i-56]
+        }else{
+            actor.defend += addNum[i-60]
+        }
+    }
+    function changeWOrS(i){
+        //64 65 66 67
+        var addNum = [10, 20, 30, 40]
+        if(i >= 64 && i <= 67){
+            actor.force += addNum[i-64]
+            actor.weapen = 'w'+(i-63)
+        }else{
+            actor.defend += addNum[i-68]
+            actor.weapen = 's'+(i-68)
+        }
+        console.log("get new equip!!!")
+    }
 
+    /***********************************************************************/
+    /*******************************orders**********************************/
+    /***********************************************************************/
     //  +
     function creat(s){
         creatWhat = s
@@ -117,9 +120,4 @@ Item {
         assert(x>1||x<0,  "volume only can be 0-1!")
         console.log("edit bgm volume to "+x)
     }
-
-    //
-
-
-
 }
