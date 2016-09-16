@@ -40,6 +40,25 @@ Rectangle{
             }
 
         }
+    Video{
+        id: bgm
+        volume: 0.7
+        autoPlay: true
+        source: "bgm/Balloon.mp3"
+        onStopped: {bgm.play()}
+        function _switchTo(path){
+            bgm.stop()
+            bgm.source = "bgm/"+path
+            bgm.play()
+        }
+    }
+    function switchTo(path){
+        bgm._switchTo(path)
+    }
+    function _editVolume(x){
+        bgm.volume = x
+    }
+
 
     MotaFunc {
         id: func

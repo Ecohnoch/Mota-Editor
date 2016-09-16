@@ -9,24 +9,6 @@ Item {
     property var edef: json.edef
     property var eblo: json.eblo
     property var ename:json.ename
-    Video{
-        id: bgm
-        volume: 1
-        autoLoad: true
-        autoPlay: true
-        source: "bgm/ScriabinPrelude.m4a"
-        function _switchTo(path){
-            bgm.stop()
-            bgm.source = "bgm/"+path
-            bgm.play()
-        }
-    }
-    function switchTo(path){
-        bgm._switchTo(path)
-    }
-    function _editVolume(x){
-        bgm.volume = x
-    }
 
 
     Image{
@@ -128,7 +110,7 @@ Item {
             fightStart.times = 0
             fightStart.stop()
             fightBg.visible = false
-            switchTo('ScriabinPrelude.m4a')
+            switchTo('Balloon.mp3')
             event.transing = true
             console.log("fight end!!!!")
         }

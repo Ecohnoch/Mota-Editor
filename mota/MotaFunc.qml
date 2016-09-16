@@ -61,6 +61,168 @@ Item {
         console.log("get new equip!!!")
     }
 
+   /**********************TWO****************************************************/
+   /*********************MAIN****************************************************/
+   /******************FUNCTIONS**************************************************/
+
+    //must be
+    function creatCell( i, creatWhat){
+        if(creatWhat === "empty"){     //empty road
+            cell.changeIsWall(i, 0)
+            console.log("empty")
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat === "wall"){   // normal wall
+            cell.changeIsWall(i, 1)
+            myWall.push(i)
+            ui.upDataFlick2(i)
+            console.log(myWall)
+            return
+        }
+        else if(creatWhat === "npc"){    //  normal npc, can't disappear
+            cell.changeIsWall(i, 2)
+            myNpc[0].push(i)
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat === "npc2"){   // spcial npc, will be road
+            cell.changeIsWall(i, 3)
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat === "npc3"){   //spcial npc, will be wall
+            cell.changeIsWall(i, 4)
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat === "npc4"){   //spcial npc, will be item1
+            cell.changeIsWall(i, 5)
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat.substring(0,5) ==="enemy"){    //enemy 1, normal ,cost 100 blood
+            if(creatWhat.length === 5){ cell.changeIsWall(i, 6);ui.upDataFlick2(i)}
+            else{
+                var ii = parseInt(creatWhat.substring(5,creatWhat.length))
+                cell.changeIsWall(i, ii+5)
+                ui.upDataFlick2(i)
+            }
+            return
+        }
+
+        else if(creatWhat ==="speWall"){
+            cell.changeIsWall(i, 51)
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat === "speWall2"){
+            cell.changeIsWall(i, 52)
+            ui.upDataFlick2(i)
+            return
+        }
+        else if(creatWhat === "speWall3"){
+            cell.changeIsWall(i, 53)
+            ui.upDataFlick2(i)
+        }
+        else if(creatWhat === "downStair"){
+            cell.changeIsWall(i, 54)
+            ui.upDataFlick2(i)
+        }
+        else if(creatWhat === "upStair"){
+            cell.changeIsWall(i, 55)
+            ui.upDataFlick2(i)
+        }
+        else if(creatWhat.substring(0,4) === "item"){
+            var iii = parseInt(creatWhat.substring(4,creatWhat.length))
+            cell.changeIsWall(i, 55+iii)
+            ui.upDataFlick2(i)
+        }
+        else if(creatWhat.substring(0,5) === 'equip'){
+            var iiii = parseInt(creatWhat.substring(5, creatWhat.length))
+            cell.changeIsWall(i, 63+iii)
+            ui.upDataFlick2(i)
+        }
+        else{
+            for(var j = 1; j <= 50; j++){
+                if(creatWhat === "enemy"+j ){
+                    cell.changeIsWall(i, j+5)
+                    ui.upDataFlick2(i)
+                    return
+                }
+            }
+            return
+        }
+    }
+    //hit what
+    function hitWhat(n,i){
+        if(i === 0){
+            musicPlayer.switchTo('cj070.wav')
+        }
+
+        else if(i === 1){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+            musicPlayer.switchTo(('cj081.wav'))
+            console.log("hit wall !!")
+        }
+        else if(i === 2){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+            musicPlayer.switchTo('cj078wav')
+            deal.isMoney = true
+            deal.dealsShow()
+        }
+        else if(i === 3){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+            musicPlayer.switchTo('cj078.wav')
+            deal.isMoney = false
+            deal.dealsShow()
+        }
+        else if(i === 4){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+            musicPlayer.switchTo('cj078.wav')
+            cell.cellTalk(n)
+            cell.changeIsWall(n, 0)
+        }
+        else if(i === 5){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+            musicPlayer.switchTo('cj078.wav')
+            cell.cellTalk(n)//wall.itemAt(i).startTalk()
+            cell.changeIsWall(n, 1)//wall.itemAt(i).isWall = 1
+        }
+        else if(i >= 6 && i <= 50){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+            switchTo('zd02.mp3')
+            fight.timeSet(i, n)
+            cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
+        }
+        else if(i === 51){
+            cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
+        }
+        else if(i === 52){
+            actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
+        }
+        else if(i === 53){
+            actor.p_x = actor.p_x + 30
+            cell.changeIsWall(n , 0)//wall.itemAt(i).isWall = 0
+        }
+        else if(i === 54){
+            func.changeStairs(--level)
+        }
+        else if(i === 55){
+            func.changeStairs(++level)
+        }
+        else if(i >= 56 && i <= 63){
+            musicPlayer.switchTo('cj062.wav')
+            func.addProp(i)
+            cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
+        }
+        else if(i >= 64 && i <= 71){
+            musicPlayer.switchTo('cj062.wav')
+            func.changeWOrS(i)
+            cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
+        }
+    }
+
     /***********************************************************************/
     /*******************************orders**********************************/
     /***********************************************************************/
@@ -110,7 +272,7 @@ Item {
         console.log("edit me "+"with",blo, force, def)
     }
     function editBgmVolume(x){
-        fight._editVolume(x)
+        _editVolume(x)
         assert(x>1||x<0 , "volume only can be 0-1!")
         console.log("edit bgm volume to "+x)
     }

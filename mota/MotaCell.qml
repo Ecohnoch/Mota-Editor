@@ -62,6 +62,9 @@ Item {
         }
         console.log("clear!!")
     }
+    function cellTalk(i){
+        wall.itemAt(i).startTalk()
+    }
 
     /************************************************************************/
     /********************Main*Function***************************************/
@@ -71,74 +74,7 @@ Item {
         console.log(actor.p_x, wall.itemAt(380).x)
         for(var i = 0; i < 400; i++){
             if(actor.p_x === wall.itemAt(i).x && actor.p_y === wall.itemAt(i).y){
-                if(wall.itemAt(i).isWall === 0){
-                    musicPlayer.switchTo('cj070.wav')
-                }
-
-                else if(wall.itemAt(i).isWall === 1){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo(('cj081.wav'))
-                    console.log("hit wall !!")
-                }
-                else if(wall.itemAt(i).isWall === 2){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj078wav')
-                    deal.isMoney = true
-                    deal.dealsShow()
-                }
-                else if(wall.itemAt(i).isWall === 3){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj078.wav')
-                    wall.itemAt(i).startTalk()
-                    deal.isMoney = false
-                    deal.dealsShow()
-                }
-                else if(wall.itemAt(i).isWall === 4){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj078.wav')
-                    wall.itemAt(i).startTalk()
-                    wall.itemAt(i).isWall = 0
-                }
-                else if(wall.itemAt(i).isWall === 5){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    musicPlayer.switchTo('cj078.wav')
-                    wall.itemAt(i).startTalk()
-                    wall.itemAt(i).isWall = 1
-                }
-                else if(wall.itemAt(i).isWall >= 6 && wall.itemAt(i).isWall <= 50){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    fight.switchTo('zd02.mp3')
-                    fight.timeSet(wall.itemAt(i).isWall, i)
-                    wall.itemAt(i).isWall = 0
-                }
-                else if(wall.itemAt(i).isWall === 51){
-                    wall.itemAt(i).isWall = 0
-                }
-                else if(wall.itemAt(i).isWall === 52){
-                    actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-                    ui.showWc(true, wall.itemAt(i).x, wall.itemAt(i).y)
-                }
-                else if(wall.itemAt(i).isWall === 53){
-                    actor.p_x = actor.p_x + 30
-                    wall.itemAt(i).isWall = 0
-                }
-                else if(wall.itemAt(i).isWall === 54){
-                    func.changeStairs(--level)
-                }
-                else if(wall.itemAt(i).isWall === 55){
-                    func.changeStairs(++level)
-                }
-                else if(wall.itemAt(i).isWall >= 56 && wall.itemAt(i).isWall <= 63){
-                    musicPlayer.switchTo('cj062.wav')
-                    func.addProp(wall.itemAt(i).isWall)
-                    wall.itemAt(i).isWall = 0
-                }
-                else if(wall.itemAt(i).isWall >= 64 && wall.itemAt(i).isWall <= 71){
-                    musicPlayer.switchTo('cj062.wav')
-                    func.changeWOrS(wall.itemAt(i).isWall)
-                    wall.itemAt(i).isWall = 0
-                }
-
+                func.hitWhat(i, wall.itemAt(i).isWall)
                 return
             }
         }
@@ -149,96 +85,15 @@ Item {
     /************************************************************************/
     /************************************************************************/
 
+    function changeIsWall(i,newNum){
+        wall.itemAt(i).isWall = newNum
+    }
+
     function _onClickedReport(){
         for(var i = 0; i < 400; i++){
             if(wall.itemAt(i).x<=event.mouseX-100 && wall.itemAt(i).x>=event.mouseX-100-30 && wall.itemAt(i).y
                     <= event.mouseY && wall.itemAt(i).y>= event.mouseY-30){
-                if(creatWhat === "empty"){     //empty road
-                    wall.itemAt(i).isWall = 0
-                    console.log("empty")
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat === "wall"){   // normal wall
-                    wall.itemAt(i).isWall = 1
-                    myWall.push(i)
-                    ui.upDataFlick2(i)
-                    console.log(myWall)
-                    return
-                }
-                else if(creatWhat === "npc"){    //  normal npc, can't disappear
-                    wall.itemAt(i).isWall = 2
-                    myNpc[0].push(i)
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat === "npc2"){   // spcial npc, will be road
-                    wall.itemAt(i).isWall = 3
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat === "npc3"){   //spcial npc, will be wall
-                    wall.itemAt(i).isWall = 4
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat === "npc4"){   //spcial npc, will be item1
-                    wall.itemAt(i).isWall = 5
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat.substring(0,5) ==="enemy"){    //enemy 1, normal ,cost 100 blood
-                    if(creatWhat.length === 5){ wall.itemAt(i).isWall = 6;ui.upDataFlick2(i)}
-                    else{
-                        var ii = parseInt(creatWhat.substring(5,creatWhat.length))
-                        wall.itemAt(i).isWall = ii + 5
-                        ui.upDataFlick2(i)
-                    }
-                    return
-                }
-
-                else if(creatWhat ==="speWall"){
-                    wall.itemAt(i).isWall = 51
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat === "speWall2"){
-                    wall.itemAt(i).isWall = 52
-                    ui.upDataFlick2(i)
-                    return
-                }
-                else if(creatWhat === "speWall3"){
-                    wall.itemAt(i).isWall = 53
-                    ui.upDataFlick2(i)
-                }
-                else if(creatWhat === "downStair"){
-                    wall.itemAt(i).isWall = 54
-                    ui.upDataFlick2(i)
-                }
-                else if(creatWhat === "upStair"){
-                    wall.itemAt(i).isWall = 55
-                    ui.upDataFlick2(i)
-                }
-                else if(creatWhat.substring(0,4) === "item"){
-                    var iii = parseInt(creatWhat.substring(4,creatWhat.length))
-                    wall.itemAt(i).isWall = 55 + iii
-                    ui.upDataFlick2(i)
-                }
-                else if(creatWhat.substring(0,5) === 'equip'){
-                    var iiii = parseInt(creatWhat.substring(5, creatWhat.length))
-                    wall.itemAt(i).isWall = 63+iiii
-                    ui.upDataFlick2(i)
-                }
-                else{
-                    for(var j = 1; j <= 50; j++){
-                        if(creatWhat == "enemy"+j ){
-                            wall.itemAt(i).isWall = j+5
-                            ui.upDataFlick2(i)
-                            return
-                        }
-                    }
-                    return
-                }
+                func.creatCell(i, creatWhat)
             }
         }
     }

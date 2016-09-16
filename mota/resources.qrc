@@ -96,5 +96,6 @@
         <file>image/item/w8.png</file>
         <file>bgm/cj062.wav</file>
         <file>bgm/ScriabinPrelude.mp3</file>
+        <file>bgm/Balloon.mp3</file>
     </qresource>
 </RCC>
