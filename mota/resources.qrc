@@ -1,29 +1,21 @@
 <RCC>
     <qresource prefix="/">
         <file>image/corner.png</file>
-        <file>image/npc.png</file>
-        <file>image/item1.png</file>
         <file>font/Hiragino Sans GB W3.otf</file>
         <file>font/PingFangM.ttf</file>
         <file>font/STKaiTi.ttf</file>
-        <file>image/item2.png</file>
         <file>image/actor.png</file>
         <file>image/advl.jpg</file>
-        <file>image/npc2.png</file>
-        <file>image/npc3.png</file>
-        <file>image/npc4.png</file>
         <file>image/ui1.png</file>
         <file>image/ui2.png</file>
         <file>image/ui3.png</file>
         <file>image/ui4.png</file>
-        <file>image/npc5.png</file>
         <file>bgm/cj070.wav</file>
         <file>bgm/cj081.wav</file>
         <file>bgm/cj073.wav</file>
         <file>bgm/zd02.mp3</file>
         <file>bgm/gz_bgj.wav</file>
         <file>bgm/gz_gj.wav</file>
-        <file>bgm/ScriabinPrelude.m4a</file>
         <file>bgm/cj003.wav</file>
         <file>bgm/cj058.wav</file>
         <file>image/enemyBg.png</file>
@@ -102,5 +94,7 @@
         <file>image/item/w6.png</file>
         <file>image/item/w7.png</file>
         <file>image/item/w8.png</file>
+        <file>bgm/cj062.wav</file>
+        <file>bgm/ScriabinPrelude.mp3</file>
     </qresource>
 </RCC>

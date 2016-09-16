@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets multimedia av
+QT += qml quick widgets multimedia
 CONFIG += c++11 resources_big
 
 SOURCES += main.cpp \

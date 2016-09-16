@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
         <file>MotaEvent.qml</file>
         <file>MotaActor.qml</file>
         <file>MotaFight.qml</file>

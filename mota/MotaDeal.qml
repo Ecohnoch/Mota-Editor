@@ -5,6 +5,7 @@ import QtMultimedia 5.4
 Item {
     x:100
     visible: false
+    property bool isMoney: true
     Rectangle{
         visible: false
         id: dealBg
@@ -15,9 +16,12 @@ Item {
             x: 30; y:30
             id: dealInstruction
             width: 360; height: 70
-            text: "$25, you can buy 3 gong, 5 fang or 800 blood"
+            text: {
+                if(isMoney) return "$25, you can buy 3 gong, 5 fang or 800 blood"
+                else return "exp100, you can buy 10 gong, 18 fang or 3000 blood"
+            }
             font.family:  "Arial"
-            font.pixelSize: 18
+            font.pixelSize: {if(isMoney) return 18; else return 15}
         }
     }
     Repeater{
@@ -34,17 +38,29 @@ Item {
                 console.log("clicked")
                 if(index === 0 && actor.money >= 25){
                     if(level <=10 ){
-                        actor.force += 3; actor.money -= 25
+                        if(isMoney){
+                            actor.force += 3; actor.money -= 25
+                        }else{
+                            actor.force += 10; actor.exp -= 100
+                        }
                     }
                     musicPlayer.switchTo('cj073.wav')
                 }else if(index === 1 && actor.money >= 25){
                     if(level <= 10){
-                        actor.defend += 5; actor.money -= 25
+                        if(isMoney){
+                            actor.defend += 5; actor.money -= 25
+                        }else{
+                            actor.defend += 18; actor.exp -= 100
+                        }
                     }
                     musicPlayer.switchTo('cj073.wav')
                 }else if(index ===2 && actor.money >= 25){
                     if(level <= 10){
-                    actor.blood += 800; actor.money -= 25
+                        if(isMoney){
+                            actor.blood += 800; actor.money -= 25
+                        }else{
+                            actor.blood += 3000; actor.exp -= 100
+                        }
                     }
                     musicPlayer.switchTo('cj073.wav')
                 }else if(index ===3){

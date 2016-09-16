@@ -1,7 +1,7 @@
 import QtGraphicalEffects 1.0
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtAV 1.6
+import QtMultimedia 5.4
 
 Item {
     x: 100
@@ -9,17 +9,15 @@ Item {
     property var edef: json.edef
     property var eblo: json.eblo
     property var ename:json.ename
-    AVPlayer{
+    Video{
         id: bgm
         volume: 1
-        loops: Animation.Infinite
         autoLoad: true
         autoPlay: true
         source: "bgm/ScriabinPrelude.m4a"
         function _switchTo(path){
             bgm.stop()
             bgm.source = "bgm/"+path
-            bgm.loops = Animation.Infinite
             bgm.play()
         }
     }
@@ -125,6 +123,8 @@ Item {
             fightStart.restart()
         }
         else if(actor.e_blood <= 0){
+            actor.money += json.money[realX]
+            actor.exp += json.exp[realX]
             fightStart.times = 0
             fightStart.stop()
             fightBg.visible = false
