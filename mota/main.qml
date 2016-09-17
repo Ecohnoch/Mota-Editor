@@ -26,39 +26,9 @@ Rectangle{
     property var myItem: []
     property var level1:[]
     property string creatWhat: "wall"
-
-    Video{
-            id: musicPlayer
-            volume: 1
-            property var myStarted
-            property var myStopped
-            autoPlay: false
-            function switchTo(path){
-                musicPlayer.stop()
-                musicPlayer.source = "bgm/"+path
-                musicPlayer.play()
-            }
-
-        }
-    Video{
-        id: bgm
-        volume: 0.7
-        autoPlay: true
-        source: "bgm/Balloon.mp3"
-        onStopped: {bgm.play()}
-        function _switchTo(path){
-            bgm.stop()
-            bgm.source = "bgm/"+path
-            bgm.play()
-        }
+    MotaMusic{
+        id:music
     }
-    function switchTo(path){
-        bgm._switchTo(path)
-    }
-    function _editVolume(x){
-        bgm.volume = x
-    }
-
 
     MotaFunc {
         id: func

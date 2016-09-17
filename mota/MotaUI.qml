@@ -254,24 +254,6 @@ Item {
         }
     }
 
-           /*Rectangle{
-               width:enemyeditor.width; height:enemyeditor.height
-               x: enemyeditor.x; y: enemyeditor.y
-               color: "white"
-           }
-
-           TextEdit{
-               id: enemyeditor
-               width: 40; height: 20
-               x: 40; y: 15+index*30
-           }
-           function enemyEdit(text){
-               if(index == 0) actor.e_blood = parseInt(text)
-               else if(index == 1) actor.e_force = parseInt(text)
-               else actor.e_defend = parseInt(text)
-           }
-       }*/
-
    property bool isShowEnemyOn: false
    function enemyShow(x, y){
        isShowEnemyOn = true

@@ -44,7 +44,7 @@ Item {
                             actor.force += 10; actor.exp -= 100
                         }
                     }
-                    musicPlayer.switchTo('cj073.wav')
+                    music.switchToSe('cj073.wav')
                 }else if(index === 1 && actor.money >= 25){
                     if(level <= 10){
                         if(isMoney){
@@ -53,7 +53,7 @@ Item {
                             actor.defend += 18; actor.exp -= 100
                         }
                     }
-                    musicPlayer.switchTo('cj073.wav')
+                    music.switchToSe('cj073.wav')
                 }else if(index ===2 && actor.money >= 25){
                     if(level <= 10){
                         if(isMoney){
@@ -62,11 +62,10 @@ Item {
                             actor.blood += 3000; actor.exp -= 100
                         }
                     }
-                    musicPlayer.switchTo('cj073.wav')
+                    music.switchToSe('cj073.wav')
                 }else if(index ===3){
                     deal.dealsDown()
-                    musicPlayer.switchTo('cj078.wav')
-                }
+                    music.switchToSe('cj078.wav')                }
             }
         }
         function buttonsUp(){

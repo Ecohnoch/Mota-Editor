@@ -157,41 +157,41 @@ Item {
     //hit what
     function hitWhat(n,i){
         if(i === 0){
-            musicPlayer.switchTo('cj070.wav')
+            music.switchToSe('cj070.wav')
         }
 
         else if(i === 1){
             actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-            musicPlayer.switchTo(('cj081.wav'))
+            music.switchToSe('cj081.wav')
             console.log("hit wall !!")
         }
         else if(i === 2){
             actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-            musicPlayer.switchTo('cj078wav')
+            music.switchToSe('cj078.wav')
             deal.isMoney = true
             deal.dealsShow()
         }
         else if(i === 3){
             actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-            musicPlayer.switchTo('cj078.wav')
+            music.switchToSe('cj078.wav')
             deal.isMoney = false
             deal.dealsShow()
         }
         else if(i === 4){
             actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-            musicPlayer.switchTo('cj078.wav')
+            music.switchToSe('cj078.wav')
             cell.cellTalk(n)
             cell.changeIsWall(n, 0)
         }
         else if(i === 5){
             actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-            musicPlayer.switchTo('cj078.wav')
+            music.switchToSe('cj078.wav')
             cell.cellTalk(n)//wall.itemAt(i).startTalk()
             cell.changeIsWall(n, 1)//wall.itemAt(i).isWall = 1
         }
         else if(i >= 6 && i <= 50){
             actor.p_x = actor.cur_x; actor.p_y = actor.cur_y
-            switchTo('zd02.mp3')
+            music.switchTo('zd02.mp3')
             fight.timeSet(i, n)
             cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
         }
@@ -212,12 +212,12 @@ Item {
             func.changeStairs(++level)
         }
         else if(i >= 56 && i <= 63){
-            musicPlayer.switchTo('cj062.wav')
+            music.switchToSe('cj062.wav')
             func.addProp(i)
             cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
         }
         else if(i >= 64 && i <= 71){
-            musicPlayer.switchTo('cj062.wav')
+            music.switchToSe('cj062.wav')
             func.changeWOrS(i)
             cell.changeIsWall(n, 0)//wall.itemAt(i).isWall = 0
         }

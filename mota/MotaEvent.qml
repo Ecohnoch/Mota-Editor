@@ -11,7 +11,7 @@ MouseArea {
     }
 
     onClicked: function(e) {
-        musicPlayer.switchTo('cj058.wav')
+        music.switchToSe('cj058.wav')
         if(ui.isShowEnemyOn === true){
             ui.enemyHide()
         }
@@ -93,7 +93,7 @@ MouseArea {
                                 "equip5","equip6","equip7","equip8"]
         for(var i = 0; i < table.length; i++){
             if(creatWhat === table[i]){
-                musicPlayer.switchTo('cj003.wav')
+                music.switchToSe('cj003.wav')
                 if( i != table.length - 1) creatWhat = table[i+1]
                 else creatWhat = "empty"
                 if(creatWhat === "npc") ui.showEditor()
