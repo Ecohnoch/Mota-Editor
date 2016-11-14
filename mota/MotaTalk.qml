@@ -5,19 +5,33 @@ import QtQuick.Controls 2.0
 Item {
     x:100
     property var defaultTalkData:[
-        "I Love you, will never betry you!",
-        "who said I love you?",
-        "No, it wont be you",
-        "Plz dont say that",
-        "you know nothing, yuan tianqi",
+        "欢迎来到我魔塔世界",
+        "这是由我(楚原)创造的世界",
+        "你可以成为我,来创造",
+        "鼠标左键点击地图,就能创造",
+        "按E键选择不同的创造类型",
+        "左下角的指令也可以创造,很多的指令",
+        "或者你也可以成为你自己",
+        "拿起剑,冲到最高层",
+        "战斗吧",
+        "这里可以用钱来变强",
+        "这里可以用经验来变强",
+        "需要特殊方法才能进去呢"
     ]
 
     property var myTalkData:[
-        "I Love you, will never betry you!",
-        "who said I love you?",
-        "No, it wont be you",
-        "Plz dont say that",
-        "you know nothing, yuan tianqi",
+        "欢迎来到我魔塔世界",
+        "这是由我(楚原)创造的世界",
+        "你可以成为我,来创造",
+        "鼠标左键点击地图,就能创造",
+        "按E键选择不同的创造类型",
+        "左下角的指令也可以创造,很多的指令",
+        "或者你也可以成为你自己",
+        "拿起剑,冲到最高层",
+        "战斗吧",
+        "这里可以用钱来变强",
+        "这里可以用经验来变强",
+        "需要特殊方法才能进去呢"
     ]
 
     function addData(x){

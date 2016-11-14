@@ -4,8 +4,6 @@ import QtQuick.Controls 2.0
 import Mota.Config 1.0
 Item {
     //APIs
-
-
     //init to do
     function changeStairs(i){
         myWall = json[i].myWall
@@ -26,10 +24,27 @@ Item {
         for(i = 0; i < 4; i++){
             for(j = 0; j < myNpc[i].length; j++){
                 if(index === myNpc[i][j]){
-                    return i+2
+                    return i + 2
                 }
             }
         }
+        for(i = 0; i < myEnemy[0].length; i++){
+            if(index === myEnemy[0][i]){
+                return 6
+            }
+        }
+        for(i = 0; i < myItem.length; i++){
+            for(j = 0; j < myItem[i].length; j++){
+                if(index === myItem[i][j]){
+                    return i + 57
+                }
+            }
+        }
+        if(index === myUpStair){
+            return 55
+        }
+
+
         return 0
     }
 
@@ -140,7 +155,7 @@ Item {
         }
         else if(creatWhat.substring(0,5) === 'equip'){
             var iiii = parseInt(creatWhat.substring(5, creatWhat.length))
-            cell.changeIsWall(i, 63+iii)
+            cell.changeIsWall(i, 63+iiii)
             ui.upDataFlick2(i)
         }
         else{

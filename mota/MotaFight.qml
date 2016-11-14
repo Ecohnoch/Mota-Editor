@@ -94,8 +94,9 @@ Item {
         fightStart.times++
         actor.e_blood = actor.e_blood - delBlood
         actor.blood = actor.blood - myDel
-        if(actor.blood <= 1000) musicPlayer.switchTo('gz_bgj.wav')
-        else musicPlayer.switchTo('gz_gj.wav')
+
+        if(actor.blood <= 1000) music.switchToSe('gz_bgj.wav')
+        else music.switchToSe('gz_gj.wav')
 
         if(actor.blood <= 0){
             event.transing = false; cell.visible = false; fight.visible = false
@@ -110,7 +111,7 @@ Item {
             fightStart.times = 0
             fightStart.stop()
             fightBg.visible = false
-            switchTo('Balloon.mp3')
+            music.switchTo('Balloon.mp3')
             event.transing = true
             console.log("fight end!!!!")
         }

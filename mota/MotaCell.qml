@@ -39,7 +39,7 @@ Item {
             }
             Image{
                 id: background
-                source: "image/"+isWhat[isWall]+".png"
+                source: "image/"+isWhat[walls.isWall]+".png"
             }
 
             function startTalk(x){
